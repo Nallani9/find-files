@@ -1,0 +1,28 @@
+  Future<File> future2 = executorService.submit(() -> {
+                    System.out.println(String.format("starting expensive task thread %s", Thread.currentThread().getName()));
+                    File returnedValue = recursiveSearch(searchTerm, filesFromRoot);
+                    return returnedValue;
+                });
+
+                while (!(future1.isDone() && future2.isDone())) {
+                    System.out.println(
+                            String.format(
+                                    "future1 is %s and future2 is %s",
+                                    future1.isDone() ? "done" : "not done",
+                                    future2.isDone() ? "done" : "not done"
+                            )
+                    );
+                    Thread.sleep(300);
+                }
+
+                File result1 = future1.get();
+                File result2 = future2.get();
+
+                System.out.println(result1 + " and " + result2);
+
+
+
+For 100 threads
+18 minuties for searching disk C
+4 seconds for searching disk N
+5 seconds for searching disk S

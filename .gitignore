@@ -1,0 +1,9 @@
+/.gradle
+/build/
+.idea/
+__pycache__/
+*.iml
+/out/
+/target/
+/.mvn/
+/.idea/
